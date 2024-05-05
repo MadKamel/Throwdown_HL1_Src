@@ -137,6 +137,7 @@ void CZombie::SetYawSpeed()
 bool CZombie::TakeDamage(entvars_t* pevInflictor, entvars_t* pevAttacker, float flDamage, int bitsDamageType)
 {
 	//Print "Ouch!" when hit.
+	//BUG: This does not seem to actually work :(
 	ALERT(at_console, "Ouch!\n");
 
 	// Take 30% damage from bullets
