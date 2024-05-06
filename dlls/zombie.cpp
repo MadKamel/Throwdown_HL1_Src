@@ -137,8 +137,12 @@ void CZombie::SetYawSpeed()
 bool CZombie::TakeDamage(entvars_t* pevInflictor, entvars_t* pevAttacker, float flDamage, int bitsDamageType)
 {
 	//Print "Ouch!" when hit.
-	//BUG: This does not seem to actually work :(
-	ALERT(at_console, "Ouch!\n");
+	//Be sure to use 'developer 1' in console to allow this to actually output
+	//(and uncomment to make it actually run)
+	//ALERT(at_console, "Ouch!\n");
+
+	//int* ptr = nullptr;
+	//*ptr = 666; //because im evil mwahahaha
 
 	// Take 30% damage from bullets
 	if (bitsDamageType == DMG_BULLET)
@@ -292,7 +296,8 @@ void CZombie::Spawn()
 	MonsterInit();
 
 	//This should make zombies brighter.
-	pev->effects = EF_DIMLIGHT;
+	//Just uncomment and compile.
+	//pev->effects = EF_DIMLIGHT;
 }
 
 //=========================================================
