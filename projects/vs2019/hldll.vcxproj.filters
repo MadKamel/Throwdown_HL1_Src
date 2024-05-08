@@ -366,7 +366,7 @@
     <ClCompile Include="..\..\public\interface.cpp">
       <Filter>Source Files\public</Filter>
     </ClCompile>
-    <ClCompile Include="triggerprint.cpp">
+    <ClCompile Include="pointprint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
