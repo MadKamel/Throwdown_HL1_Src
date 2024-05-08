@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dlls",
     "\\projects",
     "\\projects\\vs2019"
   ],
-  "SelectedNode": "\\dlls\\zombie.cpp",
+  "SelectedNode": "\\projects\\vs2019\\pointprint.cpp",
   "PreviewInSolutionExplorer": false
 }
