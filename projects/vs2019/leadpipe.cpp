@@ -82,7 +82,7 @@ void CLeadpipe::Holster()
 }
 
 
-/*void FindHullIntersection(const Vector& vecSrc, TraceResult& tr, const Vector& mins, const Vector& maxs, edict_t* pEntity)
+void FindHullIntersectionTD(const Vector& vecSrc, TraceResult& tr, const Vector& mins, const Vector& maxs, edict_t* pEntity)
 {
 	int i, j, k;
 	float distance;
@@ -124,7 +124,7 @@ void CLeadpipe::Holster()
 			}
 		}
 	}
-}*/
+}
 
 
 void CLeadpipe::PrimaryAttack()
@@ -171,7 +171,7 @@ bool CLeadpipe::Swing(bool fFirst)
 			// This is and approximation of the "best" intersection
 			CBaseEntity* pHit = CBaseEntity::Instance(tr.pHit);
 			if (!pHit || pHit->IsBSPModel())
-				FindHullIntersection(vecSrc, tr, VEC_DUCK_HULL_MIN, VEC_DUCK_HULL_MAX, m_pPlayer->edict());
+				FindHullIntersectionTD(vecSrc, tr, VEC_DUCK_HULL_MIN, VEC_DUCK_HULL_MAX, m_pPlayer->edict());
 			vecEnd = tr.vecEndPos; // This is the point on the actual surface (the hull could have hit space)
 		}
 	}
