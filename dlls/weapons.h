@@ -72,6 +72,11 @@ public:
 
 // weapon weight factors (for auto-switching)   (-1 = noswitch)
 #define CROWBAR_WEIGHT 0
+#define LEADPIPE_WEIGHT 5 //Throwdown lead pipe weight
+
+
+
+
 #define GLOCK_WEIGHT 10
 #define PYTHON_WEIGHT 15
 #define MP5_WEIGHT 15
@@ -562,6 +567,50 @@ public:
 
 private:
 	unsigned short m_usCrowbar;
+};
+
+//Throwdown Lead Pipe
+enum leadpipe_e
+{
+	LEADPIPE_IDLE = 0,
+	LEADPIPE_DRAW,
+	LEADPIPE_HOLSTER,
+	LEADPIPE_ATTACK1HIT,
+	LEADPIPE_ATTACK1MISS,
+	LEADPIPE_ATTACK2MISS,
+	LEADPIPE_ATTACK2HIT,
+	LEADPIPE_ATTACK3MISS,
+	LEADPIPE_ATTACK3HIT
+};
+
+class CLeadpipe : public CBasePlayerWeapon
+{
+public:
+	void Spawn() override;
+	void Precache() override;
+	int iItemSlot() override { return 1; }
+	void EXPORT SwingAgain();
+	void EXPORT Smack();
+	bool GetItemInfo(ItemInfo* p) override;
+
+	void PrimaryAttack() override;
+	bool Swing(bool fFirst);
+	bool Deploy() override;
+	void Holster() override;
+	int m_iSwing;
+	TraceResult m_trHit;
+
+	bool UseDecrement() override
+	{
+#if defined(CLIENT_WEAPONS)
+		return true;
+#else
+		return false;
+#endif
+	}
+
+private:
+	unsigned short m_usLeadpipe;
 };
 
 enum python_e

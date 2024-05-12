@@ -369,6 +369,9 @@
     <ClCompile Include="pointprint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="leadpipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\dlls\doors.h">
