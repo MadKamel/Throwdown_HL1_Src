@@ -366,10 +366,10 @@
     <ClCompile Include="..\..\public\interface.cpp">
       <Filter>Source Files\public</Filter>
     </ClCompile>
-    <ClCompile Include="pointprint.cpp">
+    <ClCompile Include="..\..\dlls\leadpipe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="leadpipe.cpp">
+    <ClCompile Include="..\..\dlls\pointprint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
