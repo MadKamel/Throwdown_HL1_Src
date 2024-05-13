@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dlls",
     "\\projects",
     "\\projects\\vs2019"
   ],
-  "SelectedNode": "\\dlls\\crowbar.cpp",
+  "SelectedNode": "\\projects\\vs2019\\projects.sln",
   "PreviewInSolutionExplorer": false
 }

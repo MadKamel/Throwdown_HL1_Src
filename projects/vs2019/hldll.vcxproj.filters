@@ -626,5 +626,8 @@
     <ClInclude Include="..\..\public\interface.h">
       <Filter>Header Files\public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dlls\throwdown\findhullintersectiontd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

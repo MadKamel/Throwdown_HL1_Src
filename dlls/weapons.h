@@ -613,6 +613,50 @@ private:
 	unsigned short m_usLeadpipe;
 };
 
+// Throwdown Lead Pipe
+enum chainsaw_e
+{
+	CHAINSAW_IDLE = 0,
+	CHAINSAW_DRAW,
+	CHAINSAW_HOLSTER,
+	CHAINSAW_ATTACK1HIT,
+	CHAINSAW_ATTACK1MISS,
+	CHAINSAW_ATTACK2MISS,
+	CHAINSAW_ATTACK2HIT,
+	CHAINSAW_ATTACK3MISS,
+	CHAINSAW_ATTACK3HIT
+};
+
+class CChainsaw : public CBasePlayerWeapon
+{
+public:
+	void Spawn() override;
+	void Precache() override;
+	int iItemSlot() override { return 1; }
+	void EXPORT Smack();
+	void EXPORT SwingVoid();
+	bool GetItemInfo(ItemInfo* p) override;
+
+	void PrimaryAttack() override;
+	bool Swing();
+	bool Deploy() override;
+	void Holster() override;
+	int m_iSwing;
+	TraceResult m_trHit;
+
+	bool UseDecrement() override
+	{
+#if defined(CLIENT_WEAPONS)
+		return true;
+#else
+		return false;
+#endif
+	}
+
+private:
+	unsigned short m_usChainsaw;
+};
+
 enum python_e
 {
 	PYTHON_IDLE1 = 0,
