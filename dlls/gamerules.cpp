@@ -292,6 +292,9 @@ void CGameRules::RefreshSkillData()
 	// Crowbar whack
 	gSkillData.plrDmgCrowbar = GetSkillCvar("sk_plr_crowbar");
 
+	// Throwdown lead pipe
+	gSkillData.plrDmgLeadpipe = GetSkillCvar("sk_plr_td_leadpipe");
+
 	// Glock Round
 	gSkillData.plrDmg9MM = GetSkillCvar("sk_plr_9mm_bullet");
 

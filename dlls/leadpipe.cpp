@@ -183,12 +183,12 @@ bool CLeadpipe::Swing(bool fFirst)
 		if ((m_flNextPrimaryAttack + 1 < UTIL_WeaponTimeBase()) || g_pGameRules->IsMultiplayer())
 		{
 			// first swing does full damage (x3 crowbar)
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 3, gpGlobals->v_forward, &tr, DMG_CLUB);
+			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgLeadpipe, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		else
 		{
 			// subsequent swings do half (x1.5 crowbar)
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 1.5, gpGlobals->v_forward, &tr, DMG_CLUB);
+			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgLeadpipe * 0.5, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		ApplyMultiDamage(m_pPlayer->pev, m_pPlayer->pev);
 
