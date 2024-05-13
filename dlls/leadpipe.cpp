@@ -157,7 +157,7 @@ bool CLeadpipe::Swing(bool fFirst)
 
 	UTIL_MakeVectors(m_pPlayer->pev->v_angle);
 	Vector vecSrc = m_pPlayer->GetGunPosition();
-	Vector vecEnd = vecSrc + gpGlobals->v_forward * 32;
+	Vector vecEnd = vecSrc + gpGlobals->v_forward * 48; //was 32, Pretty sure this is distance the crowbar can hit.
 
 	UTIL_TraceLine(vecSrc, vecEnd, dont_ignore_monsters, ENT(m_pPlayer->pev), &tr);
 
@@ -190,7 +190,7 @@ bool CLeadpipe::Swing(bool fFirst)
 		if (fFirst)
 		{
 			// miss
-			m_flNextPrimaryAttack = GetNextAttackDelay(1); //was 0.5
+			m_flNextPrimaryAttack = GetNextAttackDelay(1);
 
 			// player "shoot" animation
 			m_pPlayer->SetAnimation(PLAYER_ATTACK1);
@@ -224,19 +224,19 @@ bool CLeadpipe::Swing(bool fFirst)
 		// I am tying the lead pipe damage values to the crowbar because I can't figure out the skill thing yet.
 		if ((m_flNextPrimaryAttack + 1 < UTIL_WeaponTimeBase()) || g_pGameRules->IsMultiplayer())
 		{
-			// first swing does full damage (x2)
+			// first swing does full damage (x3 crowbar)
 			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 3, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		else
 		{
-			// subsequent swings do half (x1, no change)
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar, gpGlobals->v_forward, &tr, DMG_CLUB);
+			// subsequent swings do half (x1.5 crowbar)
+			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 1.5, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		ApplyMultiDamage(m_pPlayer->pev, m_pPlayer->pev);
 
 #endif
 
-		m_flNextPrimaryAttack = GetNextAttackDelay(0.5); //was 0.25
+		m_flNextPrimaryAttack = GetNextAttackDelay(0.5);
 
 #ifndef CLIENT_DLL
 		// play thwack, smack, or dong sound
