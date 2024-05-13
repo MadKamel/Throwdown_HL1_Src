@@ -190,7 +190,7 @@ bool CLeadpipe::Swing(bool fFirst)
 		if (fFirst)
 		{
 			// miss
-			m_flNextPrimaryAttack = GetNextAttackDelay(0.5);
+			m_flNextPrimaryAttack = GetNextAttackDelay(1); //was 0.5
 
 			// player "shoot" animation
 			m_pPlayer->SetAnimation(PLAYER_ATTACK1);
@@ -221,11 +221,11 @@ bool CLeadpipe::Swing(bool fFirst)
 		CBaseEntity* pEntity = CBaseEntity::Instance(tr.pHit);
 
 		ClearMultiDamage();
-
+		// I am tying the lead pipe damage values to the crowbar because I can't figure out the skill thing yet.
 		if ((m_flNextPrimaryAttack + 1 < UTIL_WeaponTimeBase()) || g_pGameRules->IsMultiplayer())
 		{
 			// first swing does full damage (x2)
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 2, gpGlobals->v_forward, &tr, DMG_CLUB);
+			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgCrowbar * 3, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		else
 		{
@@ -236,7 +236,7 @@ bool CLeadpipe::Swing(bool fFirst)
 
 #endif
 
-		m_flNextPrimaryAttack = GetNextAttackDelay(0.25);
+		m_flNextPrimaryAttack = GetNextAttackDelay(0.5); //was 0.25
 
 #ifndef CLIENT_DLL
 		// play thwack, smack, or dong sound
