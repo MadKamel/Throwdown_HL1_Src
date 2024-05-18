@@ -115,7 +115,7 @@ bool CLeadpipe::Swing(bool fFirst)
 
 	UTIL_MakeVectors(m_pPlayer->pev->v_angle);
 	Vector vecSrc = m_pPlayer->GetGunPosition();
-	Vector vecEnd = vecSrc + gpGlobals->v_forward * 48; //was 32, Pretty sure this is distance the crowbar can hit.
+	Vector vecEnd = vecSrc + gpGlobals->v_forward * 48; //was 32, Pretty sure this is distance the crowbar (lead pipe) can hit.
 
 	UTIL_TraceLine(vecSrc, vecEnd, dont_ignore_monsters, ENT(m_pPlayer->pev), &tr);
 
@@ -179,7 +179,7 @@ bool CLeadpipe::Swing(bool fFirst)
 		CBaseEntity* pEntity = CBaseEntity::Instance(tr.pHit);
 
 		ClearMultiDamage();
-		// I am tying the lead pipe damage values to the crowbar because I can't figure out the skill thing yet.
+		// I am (was) tying the lead pipe damage values to the crowbar because I can't (couldn't) figure out the skill thing yet.
 		if ((m_flNextPrimaryAttack + 1 < UTIL_WeaponTimeBase()) || g_pGameRules->IsMultiplayer())
 		{
 			// first swing does full damage (x3 crowbar)
