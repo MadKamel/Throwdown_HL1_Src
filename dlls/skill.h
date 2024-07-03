@@ -96,6 +96,7 @@ struct skilldata_t
 	// Player Weapons
 	float plrDmgCrowbar;
 	float plrDmgLeadpipe; //Throwdown lead pipe
+	float plrDmg50Cal; //Apartment Barrett
 	float plrDmg9MM;
 	float plrDmg357;
 	float plrDmgMP5;

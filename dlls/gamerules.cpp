@@ -295,6 +295,9 @@ void CGameRules::RefreshSkillData()
 	// Throwdown lead pipe
 	gSkillData.plrDmgLeadpipe = GetSkillCvar("sk_plr_td_leadpipe");
 
+	// Apartment Barrett
+	gSkillData.plrDmg50Cal = GetSkillCvar("sk_plr_ap_50cal");
+
 	// Glock Round
 	gSkillData.plrDmg9MM = GetSkillCvar("sk_plr_9mm_bullet");
 

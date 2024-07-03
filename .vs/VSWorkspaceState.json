@@ -1,14 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\dlls",
-    "\\projects",
-    "\\projects\\vs2019"
+    ""
   ],
-<<<<<<< HEAD
-  "SelectedNode": "\\dlls\\leadpipe.cpp",
-=======
-  "SelectedNode": "\\projects\\vs2019\\pointprint.cpp",
->>>>>>> parent of 7386716 (Created leadpipe.cpp)
   "PreviewInSolutionExplorer": false
 }

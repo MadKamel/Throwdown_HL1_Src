@@ -64,9 +64,9 @@ bool CLeadpipe::GetItemInfo(ItemInfo* p)
 	p->pszAmmo2 = NULL;
 	p->iMaxAmmo2 = -1;
 	p->iMaxClip = WEAPON_NOCLIP;
-	p->iSlot = 0;
+	p->iSlot = 1;
 	p->iPosition = 0;
-	p->iId = WEAPON_CROWBAR;
+	p->iId = WEAPON_CROWBAR; //Renaming this to WEAPON_LEADPIPE breaks animations for some godforsaken reason
 	p->iWeight = CROWBAR_WEIGHT;
 	return true;
 }
@@ -162,7 +162,8 @@ bool CLeadpipe::Swing(bool fFirst)
 
 	UTIL_MakeVectors(m_pPlayer->pev->v_angle);
 	Vector vecSrc = m_pPlayer->GetGunPosition();
-	Vector vecEnd = vecSrc + gpGlobals->v_forward * 24; //was 32, Pretty sure this is distance the crowbar (lead pipe) can hit.
+	Vector vecEnd = vecSrc + gpGlobals->v_forward * 16; //was 32, Pretty sure this is distance the crowbar (lead pipe) can hit.
+	// 32 is generous, 24 is decent, 16 would probably be hell
 
 	UTIL_TraceLine(vecSrc, vecEnd, dont_ignore_monsters, ENT(m_pPlayer->pev), &tr);
 
@@ -195,7 +196,7 @@ bool CLeadpipe::Swing(bool fFirst)
 		if (fFirst)
 		{
 			// miss
-			m_flNextPrimaryAttack = GetNextAttackDelay(1);
+			m_flNextPrimaryAttack = GetNextAttackDelay(0.9); // whiffed shot recovery time (1.25 is overkill)
 
 			// player "shoot" animation
 			m_pPlayer->SetAnimation(PLAYER_ATTACK1);
@@ -234,14 +235,14 @@ bool CLeadpipe::Swing(bool fFirst)
 		}
 		else
 		{
-			// subsequent swings do half (x1.5 crowbar)
-			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgLeadpipe * 0.5, gpGlobals->v_forward, &tr, DMG_CLUB);
+			// subsequent swings do three quarters (x??? crowbar)
+			pEntity->TraceAttack(m_pPlayer->pev, gSkillData.plrDmgLeadpipe * 0.75, gpGlobals->v_forward, &tr, DMG_CLUB);
 		}
 		ApplyMultiDamage(m_pPlayer->pev, m_pPlayer->pev);
 
 #endif
 
-		m_flNextPrimaryAttack = GetNextAttackDelay(0.5);
+		m_flNextPrimaryAttack = GetNextAttackDelay(0.6); // How long until you can swing again (?)
 
 #ifndef CLIENT_DLL
 		// play thwack, smack, or dong sound
@@ -308,7 +309,7 @@ bool CLeadpipe::Swing(bool fFirst)
 		m_pPlayer->m_iWeaponVolume = flVol * CROWBAR_WALLHIT_VOLUME;
 #endif
 		SetThink(&CLeadpipe::Smack);
-		pev->nextthink = gpGlobals->time + 0.2;
+		pev->nextthink = gpGlobals->time + 0.2; //what the fuck is this
 	}
 	return fDidHit;
 }
